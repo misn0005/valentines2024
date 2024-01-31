@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yes</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: pink; /* Set background color */
+        overflow: hidden; /* Hide overflow to prevent scrolling */
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        height: 100vh; /* Ensure full viewport height */
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    iframe {
+        width: 640px; /* Set width of the video */
+        height: 360px; /* Set height of the video */
+        align-items: center;
+    }
+
+    .content {
+        text-align: center; /* Center text within the content */
+        margin-bottom: 20px; /* Add space between text and video */
+    }
+
+    .confetti {
+        position: absolute; /* Position elements absolutely */
+        width: 10px; /* Adjust size as needed */
+        height: 10px;
+        background-color: red; /* Confetti color */
+        border-radius: 50%; /* Rounded shape */
+        animation: confetti-fall 2s linear infinite; /* Apply animation */
+        left: calc(100% * var(--x)); /* Set horizontal position */
+        top: calc(100% * var(--y)); /* Set vertical position */
+    }
+
+    @keyframes confetti-fall {
+        0% {
+            transform: translateY(-100vh) rotate(0deg); /* Initial position and rotation */
+        }
+        100% {
+            transform: translateY(100vh) rotate(360deg); /* Final position and rotation */
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="content">
+        <h1>she really loves me!!!!!!!!!!!!</h1>
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/jrHA6JlrOHE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <!-- JavaScript will dynamically add confetti elements here -->
+    <script>
+        // Function to create confetti elements and add them to the body
+        function createConfetti() {
+            const colors = ['red', 'blue', 'green', 'orange', 'purple']; // Array of confetti colors
+            const numConfetti = 200; // Number of confetti elements to create
+
+            for (let i = 0; i < numConfetti; i++) {
+                const confetti = document.createElement('div'); // Create a new div element for confetti
+                confetti.classList.add('confetti'); // Add 'confetti' class to the div
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Randomly select a color for the confetti
+                confetti.style.setProperty('--x', Math.random()); // Set random horizontal position using CSS custom property
+                confetti.style.setProperty('--y', Math.random()); // Set random vertical position using CSS custom property
+                confetti.style.animationDuration = (Math.random() * 2 + 1) + 's'; // Random animation duration
+                document.body.appendChild(confetti); // Add confetti to the body
+            }
+        }
+
+        // Call the function to create confetti when the page loads
+        window.onload = createConfetti;
+    </script>
+</body>
+</html>
